@@ -24,13 +24,15 @@ var FoodAdd = React.createClass({
 		});
 	},
 
-	_onSubmit: function(){
+	_onSubmit: function(event){
+
 		FoodActions.addToTable(-1, {name:this.state.value});
+		this.state.value = "";
 	},
 
 	_onKeyDown: function(event){
 		if(event.keyCode === ENTER_KEY_CODE){
-			this._onSubmit();
+			this._onSubmit(event);
 		}
 	},
 
