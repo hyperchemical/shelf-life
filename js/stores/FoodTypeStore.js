@@ -3,29 +3,19 @@ var EventEmitter = require('events').EventEmitter;
 var FoodConstants = require('../constants/FoodConstants');
 var _ = require('underscore');
 
-var _food = {}; var _uid = 0;
+var _foodtypes = {};
 
-function add(uid, update) {
-	if(uid < 0){
-		_uid = _uid + 1;
-		uid = _uid;
-	}
-	update.uid = uid;
-	_food[uid] = _.extend({}, _food[uid], update);
-
+function loadFoodTypes(data){
+	_foodtypes = data[0].foodtype;
 }
 
-function remove(uid){
-	delete _food[uid]
-}
-
-var FoodStore = _.extend({}, EventEmitter.prototype, {
-	getFoodItems: function(){
-		return _food;
+var FoodTypeStore = _.extend({}, EventEmitter.prototype, {
+	getFoodTypes: function(){
+		return _foodtypes;
 	},
 
-	getFoodCount: function(){
-		return Object.keys(_food).length;
+	getFoodTypesCount: function(){
+		return Object.keys(_foodtypes).length;
 	},
 
 	emitChange: function(){
@@ -50,23 +40,19 @@ AppDispatcher.register(function(payload) {
 
   switch(action.actionType) {
 
-    case FoodConstants.FOOD_ADD:
-      add(action.uid, action.update);
-      break;
-
-    case FoodConstants.FOOD_REMOVE:
-      remove(action.uid);
-      break;
+    case FoodConstants.RECIEVE_TYPES:
+    	loadFoodTypes(action.data);
+    	break;
 
     default:
       return true;
   }
 
   // If action was responded to, emit change event
-  FoodStore.emitChange();
+  FoodTypeStore.emitChange();
 
   return true;
 
 });
 
-module.exports = FoodStore;
+module.exports = FoodTypeStore;

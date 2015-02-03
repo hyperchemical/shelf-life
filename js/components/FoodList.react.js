@@ -17,19 +17,19 @@ var FoodList = React.createClass({
 		}
 
 		return (
-		<table className="pure-table pure-table-horizontal">
-			<thead>
-				<tr>
-					<th> </th>
-					<th>Name</th>
-					<th>Type</th>
-					<th>Date</th>
-					<th>Shelf-Life</th>
-					<th>Storage</th>
-				</tr>
-			</thead>
-			{foods}
-		</table>
+			<table className="pure-table pure-table-horizontal">
+				<thead>
+					<tr>
+						<th> </th>
+						<th>Name</th>
+						<th>Type</th>
+						<th>Date</th>
+						<th>Shelf-Life</th>
+						<th>Storage</th>
+					</tr>
+				</thead>
+				{foods}
+			</table>
 		);
 	}
 

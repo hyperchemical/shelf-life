@@ -4,6 +4,13 @@ var FoodConstants = require('../constants/FoodConstants');
 // Define actions object
 var FoodActions = {
 
+  recieveTypes: function(data){
+    AppDispatcher.handleAction({
+      actionType: FoodConstants.RECIEVE_TYPES,
+      data: data
+    })
+  },
+
   // Add item to cart
   addToTable: function(uid, update) {
     AppDispatcher.handleAction({

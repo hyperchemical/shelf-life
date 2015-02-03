@@ -16,7 +16,7 @@ var FoodItem = React.createClass({
 				</button>
 			</td>
 			<td>{food.name}</td>
-			<td>{food.type}</td>
+			<td>{food.type.capitalize()}</td>
 			<td>{food.date}</td>
 			<td>{food.shelflife}</td>
 			<td>{food.storage}</td>

@@ -1,5 +1,6 @@
 var React = require('react');
 var FoodStore = require('../stores/FoodStore');
+var FoodTypeStore = require('../stores/FoodTypeStore');
 var FoodItem = require('./FoodItem.react');
 var FoodList = require('./FoodList.react');
 var FoodAdd = require('./FoodAdd.react');
