@@ -93,14 +93,14 @@ var LoginPage = React.createClass({
 
 		return (
 			<div>
-				<h1> Diary Sign-In </h1>
+				<h1>Sign-In </h1>
 				{this.state.signinMessage}
 				<form onSubmit={this.handleLogin}>
 			        <label><input ref="email" placeholder="email"/></label>
 			        <label><input ref="pass" placeholder="password"/></label><br/>
 			        <button type="submit">Login</button>
 				</form>
-				<h1> Diary Create Account </h1>
+				<h1>Create Account </h1>
 				{this.state.signupMessage}
 				<form onSubmit={this.handleSignup}>
 			        <label><input ref="email1" placeholder="email"/></label>
