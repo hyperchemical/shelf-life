@@ -1,6 +1,5 @@
 module.exports = {
 	init: function() {
-		localStorage.clear();
 		localStorage.setItem('foodtypes', JSON.stringify([
 		{
 			foodtype: [

@@ -2,6 +2,9 @@ var React = require('react');
 var FoodActions = require('../actions/FoodActions');
 var FoodTypeStore = require('../stores/FoodTypeStore')
 var _ = require('underscore');
+var moment = require('moment');
+
+var DatePicker = require('react-date-picker');
 
 var ENTER_KEY_CODE = 13;
 
@@ -20,11 +23,13 @@ var FoodAdd = React.createClass({
 	},
 
 	getInitialState: function(){
+		console.log(moment());
 		obj = getFoodData();
 		foodObj = 
 			{
 				name: '',
-				foodType: obj.foodtypes[0]
+				foodType: obj.foodtypes[0],
+				date: moment()
 			};
 
 		return _.extend({}, obj, foodObj);
@@ -35,20 +40,17 @@ var FoodAdd = React.createClass({
 	},
 
 	_onTextChange: function(event){
-		obj = {
+
+		this.setState({
 			name: event.target.value
-		};
-		this.setState(
-			_.extend({}, this.state, obj)
-		);
+		});
 	},
 
 	_onTypeChange: function (event){
-		this.setState(
-			_.extend({}, this.state, {
-				foodType: this.state.foodtypes[event.target.value]
-			})
-		);
+
+		this.setState({
+			foodType: this.state.foodtypes[event.target.value]
+		});
 	},
 
 
@@ -74,6 +76,13 @@ var FoodAdd = React.createClass({
 		}
 	},
 
+	_onDateChange: function(moment, dateString){
+		// console.log(date);
+		this.setState({
+			date:moment
+		});
+	},
+
 	render: function(){
 		return (
 			<div className="pure-form pure-form-stacked">
@@ -95,12 +104,20 @@ var FoodAdd = React.createClass({
 						})}
 					</select>
 
+					<DatePicker 
+						key="example1"
+						date={this.state.date}
+						onChange={this._onDateChange}
+					/>
+
 					<button
 						type="button"
-						onClick={this._onSubmit} 
-					>
+						onClick={this._onSubmit} >
 					Add Food
 					</button>
+
+
+
 				</fieldset>
 			</div>
 		);
