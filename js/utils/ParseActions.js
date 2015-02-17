@@ -65,10 +65,10 @@ var ParseActions = {
 		fridgeFood.save(null, {
 			success: function(fridgeFood){
 				console.log(fridgeFood);
-				if(cb) cb(true);
+				if(cb) cb(fridgeFood.id);
 			},
 			error: function(fridgeFood, error){
-				if(cb) cb(false);
+				if(cb) cb(null);
 			}
 		})
 	},

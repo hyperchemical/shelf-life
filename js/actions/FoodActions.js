@@ -13,12 +13,12 @@ var FoodActions = {
   },
 
   // Add item to cart
-  addToTable: function(uid, update) {
-    ParseActions.addFood(update, function(isAdded){
-      if(isAdded){
+  addToTable: function(update) {
+    ParseActions.addFood(update, function(foodID){
+      if(foodID){
         AppDispatcher.handleAction({
           actionType: FoodConstants.FOOD_ADD,
-          uid: uid,
+          uid: foodID,
           update: update
         });
       } else {

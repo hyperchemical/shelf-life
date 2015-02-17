@@ -66,7 +66,7 @@ var FoodAdd = React.createClass({
 			name:this.state.name,
 			type:this.state.foodType
 		}
-		FoodActions.addToTable(-1, foodObj);
+		FoodActions.addToTable(foodObj);
 		this.state.name = "";
 	},
 
