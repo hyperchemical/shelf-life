@@ -20,7 +20,8 @@
     "watchify": "~2.1.0"
   },
   "scripts": {
-    "start": "watchify -o js/bundle.js -v -d .",
+    "start": "python -m SimpleHTTPServer",
+    "stuff": "watchify -o js/bundle.js -v -d .",
     "build": "browserify . | uglifyjs -cm > js/bundle.min.js"
   },
   "author": "hning",
