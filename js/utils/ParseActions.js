@@ -73,16 +73,43 @@ var ParseActions = {
 		})
 	},
 
-	getAllFood: function(){
+	removeFood: function(uid, cb){
+		var FridgeFood = Parse.Object.extend("FridgeFood");
+		var queryObject = new Parse.Query(FridgeFood);
+		queryObject.get(uid, {
+			success: function(gameScore){
+				gameScore.destroy({
+					success: function(gameScore){
+						console.log("Deleted from cloud");
+						if(cb) cb(true);
+					},
+					error: function(gameScore){
+						console.log("Could not delete from cloud");
+						if(cb) cb(false);
+					}
+				});
+			},	
+			error: function(gameScore, error){
+				console.log(error);
+			}
+		});
+	},
+
+	getAllFood: function(cb){
 		// relation = 
 		var FridgeFood = Parse.Object.extend("FridgeFood");
 		var queryObject = new Parse.Query(FridgeFood);
 		queryObject.find({
 			success: function(results){
-
+				console.log(results);
+				if(cb){
+					cb(results);
+				}
 			},
 			error: function(error){
-
+				if(cb){
+					cb(null);
+				}
 			}
 		});
 	}

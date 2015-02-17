@@ -1,6 +1,7 @@
 var React = require('react');
 var _ = require('underscore');
 
+var FoodActions = require('../actions/FoodActions');
 var FoodStore = require('../stores/FoodStore');
 var FoodTypeStore = require('../stores/FoodTypeStore');
 var FoodItem = require('./FoodItem.react');
@@ -22,6 +23,7 @@ var FoodDashboard = React.createClass({
 
 	getInitialState: function(){
 		// _.extend({}, getFood(), {loggedIn: false});
+		FoodActions.getAllFood();
 		return getFood();
 	},
 
@@ -36,6 +38,7 @@ var FoodDashboard = React.createClass({
 	},
 
 	render: function(){	
+		console.log(this.state.foodItems);
 		return (
 			<div className="food-dashboard">
 				<FoodAdd />

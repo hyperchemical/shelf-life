@@ -4,6 +4,8 @@ var FoodActions = require('../actions/FoodActions');
 var FoodItem = React.createClass({
 
 	_deleteItem: function(){
+		console.log("_deleteItem");
+		console.log(this.props.food);
 		FoodActions.removeFromTable(this.props.food.uid);
 	},
 

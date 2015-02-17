@@ -6,17 +6,18 @@ var _ = require('underscore');
 var _food = {}; var _uid = 0;
 
 function add(uid, update) {
-	if(uid < 0){
-		_uid = _uid + 1;
-		uid = _uid;
-	}
-	update.uid = uid;
-	_food[uid] = _.extend({}, _food[uid], update);
-
+	// if(uid < 0){
+	// 	_uid = _uid + 1;
+	// 	uid = _uid;
+	// }
+	// update.uid = uid;
+	// _food[uid] = _.extend({}, _food[uid], update);
+	
+	_food[uid] = _.extend({}, update, {uid: uid});
 }
 
 function remove(uid){
-	delete _food[uid]
+	delete _food[uid];
 }
 
 var FoodStore = _.extend({}, EventEmitter.prototype, {

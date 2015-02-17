@@ -8,6 +8,7 @@ var Route = Router.Route;
 var RouteHandler = Router.RouteHandler;
 
 var ParseActions = require('../utils/ParseActions');
+var FoodActions = require('../actions/FoodActions');
 
 var LoginPage = React.createClass({
 	mixins: [Router.Navigation],
@@ -28,17 +29,18 @@ var LoginPage = React.createClass({
 		var username = this.refs.email.getDOMNode().value;
 		var password = this.refs.pass.getDOMNode().value;
 		ParseActions.login(username, password, function(loggedIn){
+			console.log("handleLogin");
 			if(!loggedIn){
 				return this.setState({signinMessage:"Unable to log in"});
 			}
-
+			FoodActions.getAllFood();
 			if(LoginPage.attemptedTransition){
 				var transition =  LoginPage.attemptedTransition;
 				LoginPage.attemptedTransition = null;
 				transition.retry();
 			}
 		}.bind(this));
-		console.log("handleLogin");
+
 	},
 
 	handleSignup: function(event){
